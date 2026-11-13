@@ -138,7 +138,7 @@ export default function Footer() {
           </div>
           <div className="flex items-center gap-2">
             <span className="pulse-dot" />
-            <span className="text-paper/70">Currently shipping at Mylo, Gurugram</span>
+            <span className="text-paper/70">Currently at Accenture · React Native</span>
           </div>
         </div>
       </div>

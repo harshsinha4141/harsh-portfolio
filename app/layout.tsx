@@ -29,7 +29,7 @@ const jetbrains = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Harsh Sinha — Full-Stack Engineer",
   description:
-    "Full-stack engineer shipping production logistics dashboards and APIs. React, Next.js, NestJS, MySQL. Currently at Mylo, Gurugram.",
+    "Full-stack engineer shipping production logistics dashboards and APIs. React, React Native, Node.js, SQL. Currently at Accenture; previously at Mylo, Gurugram.",
   openGraph: {
     title: "Harsh Sinha — Full-Stack Engineer",
     description:
@@ -48,7 +48,7 @@ export default function RootLayout({
       lang="en"
       className={`${fraunces.variable} ${manrope.variable} ${jetbrains.variable}`}
     >
-      <body>
+      <body suppressHydrationWarning>
         <SmoothScroll>{children}</SmoothScroll>
         <Cursor />
       </body>

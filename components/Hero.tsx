@@ -76,7 +76,7 @@ export default function Hero() {
                 monoliths that stop bleeding minutes off every dispatch.
               </p>
               <p className="fade-up mt-5 font-mono text-[12px] uppercase tracking-widest text-smoke" style={{ transitionDelay: "120ms" }}>
-                — Currently at <span className="text-ink">Mylo · Gurugram</span> · React · Next.js · NestJS · MySQL
+                — Currently at <span className="text-ink">Accenture</span> · Previously <span className="text-ink">Mylo · Gurugram</span> · React · React Native · Node.js · SQL
               </p>
             </div>
           </div>
@@ -113,7 +113,7 @@ export default function Hero() {
           <span>Scroll · five chapters follow</span>
         </div>
         <div className="hidden md:block">
-          ISSN 8.60 · CGPA · CHITKARA UNIVERSITY
+          ISSN 8.71 · CGPA · CHITKARA UNIVERSITY
         </div>
       </div>
     </section>

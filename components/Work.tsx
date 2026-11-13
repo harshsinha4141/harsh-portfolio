@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { projects } from "@/lib/data";
+import { projects, type Project } from "@/lib/data";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -36,7 +36,7 @@ export default function Work() {
   return (
     <section id="work" ref={root} className="relative py-24 md:py-32">
       <div className="mx-auto max-w-[1480px] px-6 md:px-10">
-        <SectionHead num="02" label="Selected Work" tagline="Three rooms. One ledger." />
+        <SectionHead num="02" label="Selected Work" tagline="Two desks. Four builds. One ledger." />
 
         <div className="mt-16 md:mt-24 space-y-24 md:space-y-32">
           {projects.map((p, i) => (
@@ -77,8 +77,6 @@ function SectionHead({
     </div>
   );
 }
-
-type Project = (typeof projects)[number];
 
 function ProjectRow({ project, flipped }: { project: Project; flipped: boolean }) {
   return (
@@ -148,14 +146,35 @@ function ProjectRow({ project, flipped }: { project: Project; flipped: boolean }
               </li>
             ))}
           </ul>
+
+          {project.links && project.links.length > 0 && (
+            <div className="reveal-stagger mt-8 flex flex-wrap gap-3">
+              {project.links.map((l) => (
+                <a
+                  key={l.href}
+                  href={l.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-cursor="hover"
+                  className="inline-flex items-center gap-2 border border-ink/25 px-4 py-2 font-mono text-[11px] uppercase tracking-widest text-ink transition-colors hover:border-ember hover:text-ember"
+                >
+                  {l.label}
+                  <span aria-hidden>↗</span>
+                </a>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* decorative column */}
         <div className={`col-span-12 md:col-span-2 ${flipped ? "md:order-1" : ""} hidden md:flex items-start justify-end pt-4`}>
           <div className="reveal-stagger">
-            {project.index === "01" && <RouteSvg />}
-            {project.index === "02" && <TilesSvg />}
-            {project.index === "03" && <GridSvg />}
+            {project.art === "route" && <RouteSvg />}
+            {project.art === "tiles" && <TilesSvg />}
+            {project.art === "grid" && <GridSvg />}
+            {project.art === "pulse" && <PulseSvg />}
+            {project.art === "stream" && <StreamSvg />}
+            {project.art === "phone" && <PhoneSvg />}
           </div>
         </div>
       </div>
@@ -205,7 +224,7 @@ function TilesSvg() {
         <circle cx="26" cy="106" r="1.5" />
       </g>
       <g fontFamily="var(--font-mono)" fontSize="7" fill="rgb(var(--smoke))" letterSpacing="0.1em">
-        <text x="14" y="84">LIVE · 02</text>
+        <text x="14" y="84">LIVE · 05</text>
         <text x="14" y="170">CODE · STREAM · CHAT</text>
       </g>
     </svg>
@@ -233,7 +252,92 @@ function GridSvg() {
         <rect x="78" y="96" width="28" height="32" opacity="0.7" />
       </g>
       <g fontFamily="var(--font-mono)" fontSize="7" fill="rgb(var(--smoke))" letterSpacing="0.1em">
-        <text x="10" y="188">SKU · CART · ADMIN</text>
+        <text x="10" y="188">SKU · CART · ORDER</text>
+      </g>
+    </svg>
+  );
+}
+
+function PulseSvg() {
+  return (
+    <svg width="120" height="200" viewBox="0 0 120 200" fill="none" aria-hidden>
+      <g stroke="rgb(var(--ink))" strokeWidth="1" opacity="0.35">
+        <line x1="8" y1="40" x2="112" y2="40" strokeDasharray="2 4" />
+        <line x1="8" y1="140" x2="112" y2="140" strokeDasharray="2 4" />
+      </g>
+      <path
+        d="M8 100 L30 100 L38 70 L48 125 L58 55 L68 100 L112 100"
+        stroke="rgb(var(--ember))"
+        strokeWidth="1.5"
+        strokeLinejoin="round"
+      />
+      <g fill="rgb(var(--ember))">
+        <circle cx="38" cy="70" r="2.5" />
+        <circle cx="58" cy="55" r="2.5" />
+        <circle cx="48" cy="125" r="2.5" />
+      </g>
+      <g fontFamily="var(--font-mono)" fontSize="7" fill="rgb(var(--smoke))" letterSpacing="0.1em">
+        <text x="8" y="34">HIGH</text>
+        <text x="8" y="152">LOW</text>
+        <text x="8" y="188">AM · NOON · PM · NIGHT</text>
+      </g>
+    </svg>
+  );
+}
+
+function StreamSvg() {
+  return (
+    <svg width="120" height="200" viewBox="0 0 120 200" fill="none" aria-hidden>
+      <g stroke="rgb(var(--ink))" strokeWidth="1" opacity="0.4">
+        <line x1="10" y1="40" x2="110" y2="40" />
+        <line x1="10" y1="90" x2="110" y2="90" />
+        <line x1="10" y1="140" x2="110" y2="140" />
+      </g>
+      <g fill="rgb(var(--ink))" opacity="0.55">
+        {[0, 1, 2, 3, 4].map((i) => (
+          <rect key={`a${i}`} x={14 + i * 18} y="34" width="12" height="12" />
+        ))}
+        {[0, 1, 2, 3].map((i) => (
+          <rect key={`b${i}`} x={14 + i * 18} y="84" width="12" height="12" />
+        ))}
+        {[0, 1, 2].map((i) => (
+          <rect key={`c${i}`} x={14 + i * 18} y="134" width="12" height="12" />
+        ))}
+      </g>
+      <g fill="rgb(var(--ember))">
+        <rect x="86" y="34" width="12" height="12" />
+        <rect x="68" y="84" width="12" height="12" />
+        <rect x="50" y="134" width="12" height="12" />
+      </g>
+      <g fontFamily="var(--font-mono)" fontSize="7" fill="rgb(var(--smoke))" letterSpacing="0.1em">
+        <text x="10" y="26">P0</text>
+        <text x="10" y="76">P1</text>
+        <text x="10" y="126">P2</text>
+        <text x="10" y="188">TOPIC · ORDERS</text>
+      </g>
+    </svg>
+  );
+}
+
+function PhoneSvg() {
+  return (
+    <svg width="120" height="200" viewBox="0 0 120 200" fill="none" aria-hidden>
+      <g stroke="rgb(var(--ink))" strokeWidth="1" opacity="0.45">
+        <rect x="30" y="14" width="60" height="120" rx="9" />
+        <line x1="52" y1="22" x2="68" y2="22" />
+        <rect x="38" y="34" width="44" height="22" />
+        <rect x="38" y="62" width="20" height="20" />
+        <rect x="62" y="62" width="20" height="20" />
+        <rect x="38" y="88" width="20" height="20" />
+        <rect x="62" y="88" width="20" height="20" />
+      </g>
+      <g fill="rgb(var(--ember))">
+        <rect x="38" y="34" width="44" height="22" opacity="0.8" />
+        <circle cx="60" cy="122" r="3" />
+      </g>
+      <g fontFamily="var(--font-mono)" fontSize="7" fill="rgb(var(--smoke))" letterSpacing="0.1em">
+        <text x="14" y="170">iOS · ANDROID</text>
+        <text x="14" y="188">ONE CODEBASE</text>
       </g>
     </svg>
   );

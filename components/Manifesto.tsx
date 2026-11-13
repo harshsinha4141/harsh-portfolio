@@ -24,15 +24,15 @@ export default function Manifesto() {
             <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12">
               <Block
                 k="Production scale"
-                v="10+ features shipped at Mylo across Trucking, Gate Pass, and B2B panels — wired to GST, Exotel, and FBA/FBF data lakes."
+                v="Production dashboards shipped at Mylo — Shipment, P&L, B2B Packaging, Settlement — wired to E-way bills, Exotel, and marketplace data lakes."
               />
               <Block
                 k="Architecture"
-                v="Refactored a monolithic API service into panel-based NestJS modules. Service-layer boundaries you can actually reason about."
+                v="Migrated Laravel dashboards to React with role-based access, and built side projects around Redis caching, Docker Compose, and Kafka event pipelines."
               />
               <Block
                 k="Foundations"
-                v="DSA, OOP, system design — 50- and 100-day LeetCode streaks, CGPA 8.60 at Chitkara University. Hackathon winner."
+                v="DSA, OOP, system design — 50- and 100-day LeetCode streaks, CGPA 8.71 at Chitkara University. Hackathon winner."
               />
             </div>
           </div>
